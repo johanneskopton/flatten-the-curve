@@ -35,6 +35,10 @@ class Plot:
             self.ax.fill_between(self.times, 0, self.values[:, 1] +self.values[:, 0], color=np.array(agent_colors[0]) / 255)
             self.ax.fill_between(self.times, 0, self.values[:, 1], color=np.array(agent_colors[1]) / 255)
 
+            health_care_values = np.minimum(health_system_capacity, self.values[:, 1])
+            self.ax.fill_between(self.times, 0, health_care_values, color=np.array(agent_colors[1]) / 255 * 0.8 + 0.2)
+
+
             self.fig.tight_layout()
             self.fig.canvas.draw()
             self.fig.show()

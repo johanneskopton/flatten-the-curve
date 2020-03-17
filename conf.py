@@ -1,3 +1,5 @@
+import numpy as np
+
 # world size
 world_width = 1600
 world_height = 600
@@ -14,16 +16,26 @@ plot_interval = 5
 # start coordinates of the infected agent
 infection_start = [600, 400]
 
-agent_size = 10             # visual size of agent
-infection_dist = 10         # distance for infection
+agent_size = 10  # visual size of agent
+infection_dist = 10  # distance for infection
 
-agent_num = 100             # initial number of agents
+agent_num = 100  # initial number of agents
+
+agent_speed = 6.0  # movement speed of agents
+
+recovery_time = 500  # ticks after infection until agent recovers
+
+# set death probabilities overall
+death_p_health_system_overall = 0.05
+death_p_no_health_system_overall = 0.25
+
+# calculate death probabilities per tick
+death_p_health_system = -1/recovery_time * np.log(1-death_p_health_system_overall)
+death_p_no_health_system = -1/recovery_time * np.log(1-death_p_no_health_system_overall)
 
 agent_speed = 6.0           # movement speed of agents
 
-death_p = 0.05
-death_time = 480            # ticks after infection until agent dies with a probability of death_p
-recovery_time = 500         # ticks after infection until agent recovers
+health_system_capacity = 20  # number of agents that can be treated in hospitals
 
 agent_types = [
     # "irresponsible type"

@@ -22,9 +22,11 @@ class Agent:
             self.infection_time = 0     # tick of infection event
             self.pos = infection_start
             self.agent_type = 0
+            self.medical_care = True
         else:
             self.infection = 0
             self.infection_time = None
+            self.medical_care = None
 
             # initialize at random position but make sure not to collide with an obstacle or the world boundaries
             self.pos = self.random_pos()
@@ -72,23 +74,38 @@ class Agent:
         self.place_id = self.is_in_box_list(self.places, whole_dot=True)
 
         # interaction with other agents
+
+        infected_agents = 0
+        agent_idx_health_system_limit = None
         for agent_idx, agent in enumerate(self.others):
+            if agent.infection == 1:
+                infected_agents += 1
+            if infected_agents == health_system_capacity:
+                agent_idx_health_system_limit = agent_idx
+
             if agent_idx == self.id:
                 continue
 
-            if self.get_sq_dist(agent) <= infection_dist*infection_dist:
+            if self.get_sq_dist(agent) <= infection_dist * infection_dist:
                 if agent.infection == 1 and self.infection == 0:
                     self.infection = 1
                     self.infection_time = t
 
         # if infected
         if self.infection == 1:
+            self.medical_care = agent_idx_health_system_limit is None or self.id <= agent_idx_health_system_limit
+
+            if self.medical_care:
+                death_p = death_p_health_system
+            else:
+                death_p = death_p_no_health_system
+
             # death
-            if self.infection_time + death_time == t:
-                if random.random() < death_p:
-                    self.infection = 3
+            if random.random() < death_p:
+                self.infection = 3
+
             # recovery
-            if self.infection_time + recovery_time == t:
+            if t >= self.infection_time + recovery_time:
                 self.infection = 2
 
     def collide(self):
