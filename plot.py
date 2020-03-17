@@ -22,6 +22,7 @@ class Plot:
 
         self.values = np.append(self.values, [infection_counts], axis=0)
 
+
         if t % plot_interval == 1:
             self.ax.clear()
 

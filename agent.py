@@ -10,16 +10,16 @@ class Agent:
         self.obstacles = obstacles
         self.places = places
 
-        self.V = None               # movement vector
+        self.V = None  # movement vector
         self.new_direction()
 
         self.others = None
 
-        self.place_id = -1          # id of the place agent is in (-1 = no place)
+        self.place_id = -1  # id of the place agent is in (-1 = no place)
 
         if self.id == 0:
-            self.infection = 1          # the first agent is infected from the beginning
-            self.infection_time = 0     # tick of infection event
+            self.infection = 1  # the first agent is infected from the beginning
+            self.infection_time = 0  # tick of infection event
             self.pos = infection_start
             self.agent_type = 0
             self.medical_care = True
@@ -113,7 +113,7 @@ class Agent:
         self.new_direction()
 
     def new_direction(self):
-        direction = random.uniform(0, 2*np.pi)
+        direction = random.uniform(0, 2 * np.pi)
         self.calculate_V(direction)
 
     def calculate_V(self, direction):
@@ -136,8 +136,8 @@ class Agent:
     def is_outside(self, box):
         x1, x2, y1, y2 = box.get_dims()
 
-        d = agent_size/2
-        return self.pos[0]-d < x1 or self.pos[0]+d > x2 or self.pos[1]-d < y1 or self.pos[1]+d > y2
+        d = agent_size / 2
+        return self.pos[0] - d < x1 or self.pos[0] + d > x2 or self.pos[1] - d < y1 or self.pos[1] + d > y2
 
     def is_inside(self, box, whole_dot=False):
         x1, x2, y1, y2 = box.get_dims()
@@ -147,7 +147,7 @@ class Agent:
         else:
             d = agent_size / 2
 
-        return self.pos[0]+d > x1 and self.pos[0]-d < x2 and self.pos[1]+d > y1 and self.pos[1]-d < y2
+        return self.pos[0] + d > x1 and self.pos[0] - d < x2 and self.pos[1] + d > y1 and self.pos[1] - d < y2
 
     def is_inside_obstacle(self):
         for obstacle in self.obstacles:

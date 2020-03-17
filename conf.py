@@ -77,12 +77,12 @@ place_type.append(1)
 
 for i in range(8):
     for j in range(1):
-        place_dims.append([50+i*200, 150+i*200, 50+j*600, 150+j*600])
+        place_dims.append([50 + i * 200, 150 + i * 200, 50 + j * 600, 150 + j * 600])
         place_type.append(0)
 
 for i in range(2):
     for j in range(2):
-        place_dims.append([50+i*200, 150+i*200, 250+j*200, 350+j*200])
+        place_dims.append([50 + i * 200, 150 + i * 200, 250 + j * 200, 350 + j * 200])
         place_type.append(0)
 
 for i in range(2):
