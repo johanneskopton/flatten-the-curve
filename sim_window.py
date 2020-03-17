@@ -45,10 +45,13 @@ class SimWindow(QWidget):
 
         for agent in self.agents:
             if color_agent_types:
-                pen = QPen()
-                pen.setWidth(2)
-                pen.setColor(QColor(*agent_types[agent.agent_type]["color"]))
-                qp.setPen(pen)
+                if agent_types[agent.agent_type]["color"] is None:
+                    qp.setPen(Qt.transparent)
+                else:
+                    pen = QPen()
+                    pen.setWidth(2)
+                    pen.setColor(QColor(*agent_types[agent.agent_type]["color"]))
+                    qp.setPen(pen)
 
 
             qp.setBrush(QColor(*agent_colors[agent.infection]))

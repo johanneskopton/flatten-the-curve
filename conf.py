@@ -33,25 +33,24 @@ death_p_no_health_system_overall = 0.25
 death_p_health_system = -1/recovery_time * np.log(1-death_p_health_system_overall)
 death_p_no_health_system = -1/recovery_time * np.log(1-death_p_no_health_system_overall)
 
-agent_speed = 6.0           # movement speed of agents
 
 health_system_capacity = 20  # number of agents that can be treated in hospitals
 
 agent_types = [
     # "irresponsible type"
     {
-        "leave_home_p": 0.05,         # probability to leave a 'home' (place_type=0) place an collision
-        "leave_gathering_p": 0.1,    # probability to leave a 'gathering' (place_type=1) place an collision
-        "color": (0, 0, 0)
+        "leave_home_p": 0.02,  # probability to leave a 'home' (place_type=0) place an collision
+        "leave_gathering_p": 0.1,  # probability to leave a 'gathering' (place_type=1) place an collision
+        "color": None
     },
     # "responsible type"
     {
-        "leave_home_p": 0.001,        # probability to leave a 'home' (place_type=0) place an collision
-        "leave_gathering_p": 0.5,      # probability to leave a 'gathering' (place_type=1) place an collision
-        "color": (250, 250, 250)
+        "leave_home_p": 0.001,  # probability to leave a 'home' (place_type=0) place an collision
+        "leave_gathering_p": 0.5,  # probability to leave a 'gathering' (place_type=1) place an collision
+        "color": (250, 210, 0)
     }
 ]
-agent_type_ratio = 0.5                         # proportion of agents of agent_type = 0
+agent_type_ratio = 1  # proportion of agents of agent_type = 0
 color_agent_types = True
 
 # agent colors for uninfected, infected, recovered and dead
