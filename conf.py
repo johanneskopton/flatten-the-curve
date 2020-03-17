@@ -62,8 +62,8 @@ gathering_color = (210, 210, 210)
 
 # definition of obstacle boundaries
 obstacle_dims = []
-# obstacle_dims.append([590, 610, 0, height/2-10])
-# obstacle_dims.append([590, 610, height/2+10, height])
+#obstacle_dims.append([390, 410, 0, world_height/2-30])
+#obstacle_dims.append([390, 410, world_height/2+30, world_height])
 
 # definition of place types and boundaries
 place_dims = []
