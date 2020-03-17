@@ -8,10 +8,10 @@ world_height = 600
 record = False
 
 # number of maximum ticks
-max_t = 2500
+max_t = 2000
 
 # the population graph is updated every plot_interval ticks
-plot_interval = 5
+plot_interval = 2
 
 # start coordinates of the infected agent
 infection_start = [600, 400]
