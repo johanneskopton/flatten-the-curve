@@ -7,8 +7,9 @@ matplotlib.style.use('ggplot')
 
 
 class Plot:
-    def __init__(self, agents):
+    def __init__(self, agents, plot_dir):
         self.agents = agents
+        self.plot_dir = plot_dir
         plt.ion()
         self.fig, self.ax = plt.subplots(1, figsize=(16, 2))
         self.times = [0]
@@ -42,7 +43,7 @@ class Plot:
             self.fig.tight_layout()
             self.fig.canvas.draw()
             self.fig.show()
-            self.fig.savefig("plots/plot_{:05d}.png".format(t))
+            self.fig.savefig("{}/plot_{:05d}.png".format(self.plot_dir, t))
 
     def get_infection_counts(self):
         infection_counts = [0, 0, 0, 0]
