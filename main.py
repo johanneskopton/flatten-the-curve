@@ -53,6 +53,12 @@ if __name__ == '__main__':
             agent.update(t)
         sw.update()
 
+        if health_system_capacity < plot.get_infection_counts()[1]: # once healthcare is ddosed, all agents become responsible
+            print("now responsible")
+            for agent in agents:
+                agent.leave_home_p = agent_types[1]["leave_home_p"]
+                agent.leave_gathering_p = agent_types[1]["leave_gathering_p"]
+
         if record:
             pixmap = QPixmap(sw.size())
             sw.render(pixmap)
