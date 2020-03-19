@@ -5,6 +5,7 @@ world_width = 1600
 world_height = 600
 
 # if True, create plot and record every frame of the plot an the simulation
+# CAUTION! True makes simulation extremely slow (due to matplotlib and qpixmap rendering)
 record = False
 
 # number of maximum ticks
@@ -50,7 +51,7 @@ agent_types = [
         "color": (250, 210, 0)
     }
 ]
-agent_type_ratio = 1  # proportion of agents of agent_type = 0
+agent_type_ratio = 0.5  # proportion of agents of agent_type = 0
 color_agent_types = True
 
 # agent colors for uninfected, infected, recovered and dead
