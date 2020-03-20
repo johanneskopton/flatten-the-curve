@@ -2,7 +2,9 @@ import numpy as np
 
 # world size
 world_width = 1600
-world_height = 600
+world_height = 400
+
+draw_scale = 1
 
 # if True, create plot and record every frame of the plot an the simulation
 # CAUTION! True makes simulation extremely slow (due to matplotlib and qpixmap rendering)
