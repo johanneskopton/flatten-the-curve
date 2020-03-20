@@ -86,8 +86,8 @@ class Agent:
             if agent_idx == self.id:
                 continue
 
-            if self.get_sq_dist(agent) <= infection_dist * infection_dist:
-                if agent.infection == 1 and self.infection == 0:
+            if agent.infection == 1 and self.infection == 0:
+                if self.get_sq_dist(agent) <= infection_dist * infection_dist:
                     self.infection = 1
                     self.infection_time = t
 
