@@ -1,6 +1,7 @@
 import random
 import numpy as np
 from conf import *
+from playsound import playsound
 
 
 class Agent:
@@ -85,6 +86,7 @@ class Agent:
                             self.infection = 1
                             self.infection_time = t
                             self.new_direction()
+                            playsound('klick.mp3')
 
         # if infected
         if self.infection == 1:
