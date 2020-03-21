@@ -11,7 +11,7 @@ class Plot:
         self.agents = agents
         self.plot_dir = plot_dir
         plt.ion()
-        self.fig, self.ax = plt.subplots(1, figsize=(7, 9))
+        self.fig, self.ax = plt.subplots(1, figsize=(7, 7))
         self.times = [0]
         self.values = np.array([self.get_infection_counts()])
 

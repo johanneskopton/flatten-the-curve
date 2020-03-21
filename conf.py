@@ -17,7 +17,7 @@ fit_exponential = False
 do_record = False
 
 # number of maximum ticks
-max_t = 422
+max_t = 462
 
 
 
@@ -37,15 +37,15 @@ recovery_time = 500  # ticks after infection until agent recovers
 infection_p = 0.25
 
 # set death probabilities overall
-death_p_health_system_overall = 0.00
-death_p_no_health_system_overall = 0.25
+death_p_health_system_overall = 0.0
+death_p_no_health_system_overall = 0.0
 
 # calculate death probabilities per tick
 death_p_health_system = -1/recovery_time * np.log(1-death_p_health_system_overall)
 death_p_no_health_system = -1/recovery_time * np.log(1-death_p_no_health_system_overall)
 
 
-health_system_capacity = 20  # number of agents that can be treated in hospitals
+health_system_capacity = 0  # number of agents that can be treated in hospitals
 
 agent_types = [
     # "irresponsible type"
