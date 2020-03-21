@@ -28,7 +28,7 @@ class Plot:
 
             self.ax.grid(True)
             self.ax.set_xlim(0, max_t)
-            self.ax.set_ylim(0, agent_num)
+            self.ax.set_ylim(0, plot_ymax)
 
             self.ax.fill_between(self.times, 0, self.values[:, 1] +self.values[:, 0] +self.values[:, 2] +self.values[:, 3],
                                  color=np.array(agent_colors[3]) / 255)

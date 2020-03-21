@@ -24,6 +24,7 @@ agent_size = 10  # visual size of agent
 infection_dist = 10  # distance for infection
 
 agent_num = 100  # initial number of agents
+plot_ymax = 200
 
 agent_speed = 6.0  # movement speed of agents
 
