@@ -89,4 +89,7 @@ if __name__ == '__main__':
             plot.update(t)
         app.processEvents()
 
-    sys.exit(app.exec_())
+    plot.close()
+    sw.close()
+    exit()
+

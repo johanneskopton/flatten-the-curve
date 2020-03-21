@@ -54,3 +54,6 @@ class Plot:
         for agent in self.agents:
             infection_counts[agent.infection] += 1
         return infection_counts
+
+    def close(self):
+        plt.close('all')
