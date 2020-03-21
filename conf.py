@@ -10,6 +10,8 @@ draw_scale = 1
 do_plot = True
 # the population graph is updated every plot_interval ticks
 plot_interval = 20
+# try to fit an exponential curve into the plot?
+fit_exponential = False
 
 do_record = False
 

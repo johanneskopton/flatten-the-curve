@@ -40,6 +40,10 @@ class Plot:
             health_care_values = np.minimum(health_system_capacity, self.values[:, 1])
             self.ax.fill_between(self.times, 0, health_care_values, color=np.array(agent_colors[1]) / 255 * 0.8 + 0.2)
 
+            if fit_exponential:
+                fit = np.polyfit(self.times, np.log(self.values[:, 1]), 1, w=np.sqrt(self.values[:, 1]))
+                exp = np.exp(fit[1]) + np.exp(fit[0]*np.array(self.times))
+                self.ax.plot(self.times, exp, color=(0.2, 0.2, 0.2))
 
             self.fig.tight_layout()
             self.fig.canvas.draw()
