@@ -106,7 +106,7 @@ class Agent:
                 self.infection = 2
 
     def collide(self):
-        self.pos = self.pos + (self.prev_pos - self.pos) / np.linalg.norm(self.prev_pos - self.pos) * agent_speed
+        self.pos = self.pos + (self.prev_pos - self.pos) / np.linalg.norm(self.prev_pos - self.pos, 1) * agent_speed
         self.new_direction()
 
     def new_direction(self):
@@ -154,4 +154,4 @@ class Agent:
 
     def random_pos(self):
         x1, x2, y1, y2 = self.world.get_dims()
-        return np.array([random.randint(x1, x2), random.randint(y1, y2)])
+        return np.array([random.randint(x1, x2), random.randint(y1, y2)], dtype=np.int)
