@@ -9,6 +9,26 @@ from place import Place
 from obstacle import Obstacle
 from box import Box
 from sim_window import SimWindow
+import scipy.spatial
+import random
+
+def update_agents(agents):
+    infection_dist_sq = infection_dist * infection_dist
+    pos_matrix = np.zeros((0, 2))
+    infected_agents = 0
+    agent_idx_health_system_limit = None
+    for agent_idx, agent in enumerate(agents):
+        pos_matrix = np.append(pos_matrix, [agent.pos], axis=0)
+        if agent.infection == 1:
+            infected_agents += 1
+        if infected_agents == health_system_capacity:
+            agent_idx_health_system_limit = agent_idx
+
+    distance_matrix = scipy.spatial.distance.squareform(scipy.spatial.distance.pdist(pos_matrix, metric="sqeuclidean"))
+    distance_matrix = distance_matrix < infection_dist_sq
+
+    for agent in agents:
+        agent.update(t, distance_matrix, agent_idx_health_system_limit)
 
 
 if __name__ == '__main__':
@@ -49,8 +69,7 @@ if __name__ == '__main__':
     sw = SimWindow(agents, places, obstacles)
 
     for t in range(max_t):
-        for agent in agents:
-            agent.update(t)
+        update_agents(agents)
         sw.update()
 
         if record:

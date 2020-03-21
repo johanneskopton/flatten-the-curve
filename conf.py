@@ -28,6 +28,8 @@ agent_speed = 6.0  # movement speed of agents
 
 recovery_time = 500  # ticks after infection until agent recovers
 
+infection_p = 0.25
+
 # set death probabilities overall
 death_p_health_system_overall = 0.05
 death_p_no_health_system_overall = 0.25

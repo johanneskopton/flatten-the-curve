@@ -48,7 +48,7 @@ class Agent:
         self.others = others
 
     # method called every tick
-    def update(self, t):
+    def update(self, t, distance_matrix, agent_idx_health_system_limit):
         # if dead, do not do anything
         if self.infection == 3:
             return
@@ -74,22 +74,17 @@ class Agent:
         self.place_id = self.is_in_box_list(self.places, whole_dot=True)
 
         # interaction with other agents
+        if self.infection == 0:
+            for agent_idx, agent in enumerate(self.others):
+                if agent_idx == self.id:
+                    continue
 
-        infected_agents = 0
-        agent_idx_health_system_limit = None
-        for agent_idx, agent in enumerate(self.others):
-            if agent.infection == 1:
-                infected_agents += 1
-            if infected_agents == health_system_capacity:
-                agent_idx_health_system_limit = agent_idx
-
-            if agent_idx == self.id:
-                continue
-
-            if agent.infection == 1 and self.infection == 0:
-                if self.get_sq_dist(agent) <= infection_dist * infection_dist:
-                    self.infection = 1
-                    self.infection_time = t
+                if agent.infection == 1:
+                    if distance_matrix[self.id, agent_idx]:
+                        if random.random() < infection_p:
+                            self.infection = 1
+                            self.infection_time = t
+                            self.new_direction()
 
         # if infected
         if self.infection == 1:
