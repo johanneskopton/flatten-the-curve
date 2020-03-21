@@ -44,7 +44,10 @@ class Plot:
             self.fig.tight_layout()
             self.fig.canvas.draw()
             self.fig.show()
-            self.fig.savefig("{}/plot_{:05d}.png".format(self.plot_dir, t))
+
+            if do_record:
+                self.fig.savefig("{}/plot_{:05d}.png".format(self.plot_dir, t))
+
 
     def get_infection_counts(self):
         infection_counts = [0, 0, 0, 0]

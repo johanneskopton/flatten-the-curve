@@ -6,15 +6,16 @@ world_height = 400
 
 draw_scale = 1
 
-# if True, create plot and record every frame of the plot an the simulation
-# CAUTION! True makes simulation extremely slow (due to matplotlib and qpixmap rendering)
-record = False
+
+do_plot = True
+# the population graph is updated every plot_interval ticks
+plot_interval = 20
+
+do_record = False
 
 # number of maximum ticks
 max_t = 2000
 
-# the population graph is updated every plot_interval ticks
-plot_interval = 2
 
 # start coordinates of the infected agent
 infection_start = [600, 400]

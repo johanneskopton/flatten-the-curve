@@ -33,17 +33,25 @@ def update_agents(agents):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument("output_dir", help="name of output directory")
+    parser.add_argument("--output_dir", help="name of output directory", default="tmp/", required=False)
+    parser.add_argument("--seed", help="seed for random number generator", default=0, required=False)
     args = parser.parse_args()
-    output_dir = args.output_dir
-    if not os.path.exists(output_dir):
-        os.makedirs(output_dir)
-    img_dir = os.path.join(output_dir, "imgs")
-    plot_dir = os.path.join(output_dir, "plots")
-    if not os.path.exists(img_dir):
-        os.makedirs(img_dir)
-    if not os.path.exists(plot_dir):
-        os.makedirs(plot_dir)
+
+    random.seed(args.seed)
+
+    if do_record:
+        output_dir = args.output_dir
+        img_dir = os.path.join(output_dir, "imgs")
+        plot_dir = os.path.join(output_dir, "plots")
+        if not os.path.exists(output_dir):
+            os.makedirs(output_dir)
+        if not os.path.exists(img_dir):
+            os.makedirs(img_dir)
+        if not os.path.exists(plot_dir):
+            os.makedirs(plot_dir)
+    else:
+        img_dir = None
+        plot_dir = None
 
     app = QApplication(sys.argv)
     world = Box(0, world_width, 0, world_height)
@@ -72,11 +80,12 @@ if __name__ == '__main__':
         update_agents(agents)
         sw.update()
 
-        if record:
+        if do_record:
             pixmap = QPixmap(sw.size())
             sw.render(pixmap)
             pixmap.save("{}/img_{:05d}.png".format(img_dir, t), "png")
 
+        if do_plot:
             plot.update(t)
         app.processEvents()
 
