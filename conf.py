@@ -1,8 +1,8 @@
 import numpy as np
 
 # world size
-world_width = 1600
-world_height = 400
+world_width = 900
+world_height = 900
 
 draw_scale = 1
 
@@ -14,26 +14,27 @@ plot_interval = 20
 do_record = False
 
 # number of maximum ticks
-max_t = 2000
+max_t = 422
+
 
 
 # start coordinates of the infected agent
-infection_start = [600, 400]
+infection_start = [450, 450]
 
-agent_size = 10  # visual size of agent
-infection_dist = 10  # distance for infection
+agent_size = 6  # visual size of agent
+infection_dist = 5  # distance for infection
 
-agent_num = 100  # initial number of agents
+agent_num = 800  # initial number of agents
 plot_ymax = 200
 
-agent_speed = 6.0  # movement speed of agents
+agent_speed = 3.0  # movement speed of agents
 
 recovery_time = 500  # ticks after infection until agent recovers
 
 infection_p = 0.25
 
 # set death probabilities overall
-death_p_health_system_overall = 0.05
+death_p_health_system_overall = 0.00
 death_p_no_health_system_overall = 0.25
 
 # calculate death probabilities per tick
@@ -57,7 +58,7 @@ agent_types = [
         "color": (250, 210, 0)
     }
 ]
-agent_type_ratio = 0.5  # proportion of agents of agent_type = 0
+agent_type_ratio = 1  # proportion of agents of agent_type = 0
 color_agent_types = True
 
 # agent colors for uninfected, infected, recovered and dead
@@ -69,30 +70,7 @@ gathering_color = (210, 210, 210)
 
 # definition of obstacle boundaries
 obstacle_dims = []
-#obstacle_dims.append([390, 410, 0, world_height/2-30])
-#obstacle_dims.append([390, 410, world_height/2+30, world_height])
 
 # definition of place types and boundaries
 place_dims = []
 place_type = []
-
-place_dims.append([450, 750, 250, 550])
-place_type.append(1)
-
-place_dims.append([850, 1150, 250, 550])
-place_type.append(1)
-
-for i in range(8):
-    for j in range(1):
-        place_dims.append([50 + i * 200, 150 + i * 200, 50 + j * 600, 150 + j * 600])
-        place_type.append(0)
-
-for i in range(2):
-    for j in range(2):
-        place_dims.append([50 + i * 200, 150 + i * 200, 250 + j * 200, 350 + j * 200])
-        place_type.append(0)
-
-for i in range(2):
-    for j in range(2):
-        place_dims.append([1250 + i * 200, 1350 + i * 200, 250 + j * 200, 350 + j * 200])
-        place_type.append(0)
