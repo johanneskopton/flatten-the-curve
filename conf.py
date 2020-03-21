@@ -8,6 +8,7 @@ draw_scale = 1
 
 
 do_plot = True
+do_stats = False
 # the population graph is updated every plot_interval ticks
 plot_interval = 20
 # try to fit an exponential curve into the plot?

@@ -9,6 +9,7 @@ from place import Place
 from obstacle import Obstacle
 from box import Box
 from sim_window import SimWindow
+from stats_window import StatsWindow
 import scipy.spatial
 import random
 
@@ -75,6 +76,8 @@ if __name__ == '__main__':
     plot = Plot(agents, plot_dir)
 
     sw = SimWindow(agents, places, obstacles)
+    if do_stats:
+        stw = StatsWindow()
 
     for t in range(max_t):
         update_agents(agents)
@@ -87,6 +90,8 @@ if __name__ == '__main__':
 
         if do_plot:
             plot.update(t)
+            if do_stats:
+                stw.update(plot.values)
         app.processEvents()
 
     plot.close()
