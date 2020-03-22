@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 import matplotlib.style
 from conf import *
 import numpy as np
+import pickle
 
 matplotlib.style.use('ggplot')
 
@@ -60,4 +61,5 @@ class Plot:
         return infection_counts
 
     def close(self):
+        pickle.dump((self.times, self.values), open(".tmp.p", "wb"))
         plt.close('all')
