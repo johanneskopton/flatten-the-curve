@@ -1,7 +1,6 @@
 import random
 import numpy as np
 from conf import *
-from playsound import playsound
 
 
 class Agent:
@@ -50,6 +49,8 @@ class Agent:
 
     # method called every tick
     def update(self, t, distance_matrix, agent_idx_health_system_limit):
+        new_infected = False
+
         # if dead, do not do anything
         if self.infection == 3:
             return
@@ -86,7 +87,7 @@ class Agent:
                             self.infection = 1
                             self.infection_time = t
                             self.new_direction()
-                            playsound('klick.mp3')
+                            new_infected = True
 
         # if infected
         if self.infection == 1:
@@ -104,6 +105,8 @@ class Agent:
             # recovery
             if t >= self.infection_time + recovery_time:
                 self.infection = 2
+
+        return new_infected
 
     def collide(self):
         self.pos = self.pos + (self.prev_pos - self.pos) / np.linalg.norm(self.prev_pos - self.pos, 1) * agent_speed

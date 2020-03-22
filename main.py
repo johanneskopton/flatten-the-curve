@@ -12,6 +12,7 @@ from sim_window import SimWindow
 from stats_window import StatsWindow
 import scipy.spatial
 import random
+import pickle
 
 def update_agents(agents):
     infection_dist_sq = infection_dist * infection_dist
@@ -28,8 +29,11 @@ def update_agents(agents):
     distance_matrix = scipy.spatial.distance.squareform(scipy.spatial.distance.pdist(pos_matrix, metric="sqeuclidean"))
     distance_matrix = distance_matrix < infection_dist_sq
 
+    new_infections = 0
     for agent in agents:
-        agent.update(t, distance_matrix, agent_idx_health_system_limit)
+        new_infections += agent.update(t, distance_matrix, agent_idx_health_system_limit)
+
+    return new_infections
 
 
 if __name__ == '__main__':
@@ -79,8 +83,9 @@ if __name__ == '__main__':
     if do_stats:
         stw = StatsWindow()
 
+    new_infections_list = []
     for t in range(max_t):
-        update_agents(agents)
+        new_infections_list.append(update_agents(agents))
         sw.update()
 
         if do_record:
@@ -93,6 +98,8 @@ if __name__ == '__main__':
             if do_stats:
                 stw.update(plot.values)
         app.processEvents()
+
+    pickle.dump(new_infections_list, open("tmp/new_infections_list.p", "wb"))
 
     plot.close()
     sw.close()
