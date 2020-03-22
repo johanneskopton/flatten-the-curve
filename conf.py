@@ -10,14 +10,14 @@ draw_scale = 1
 do_plot = True
 do_stats = False
 # the population graph is updated every plot_interval ticks
-plot_interval = 20
+plot_interval = 60
 # try to fit an exponential curve into the plot?
 fit_exponential = False
 
 do_record = False
 
 # number of maximum ticks
-max_t = 462
+max_t = 602
 
 
 
@@ -27,12 +27,12 @@ infection_start = [450, 450]
 agent_size = 6  # visual size of agent
 infection_dist = 5  # distance for infection
 
-agent_num = 800  # initial number of agents
-plot_ymax = 200
+agent_num = 600  # initial number of agents
+plot_ymax = 180
 
 agent_speed = 3.0  # movement speed of agents
 
-recovery_time = 500  # ticks after infection until agent recovers
+recovery_time = 5000  # ticks after infection until agent recovers
 
 infection_p = 0.25
 
