@@ -2,14 +2,14 @@ import numpy as np
 
 # world size
 world_width = 1600
-world_height = 400
+world_height = 600
 
 draw_scale = 1
 
 
-do_plot = True
+do_plot = False
 # the population graph is updated every plot_interval ticks
-plot_interval = 20
+plot_interval = 60
 
 do_record = False
 
